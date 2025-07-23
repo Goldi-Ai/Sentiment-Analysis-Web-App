@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Sentiment Analysis Tool</h1>
+    <form action="/analyze" method="POST">
+        <textarea name="text" placeholder="Type your sentence..." required>{{ text or '' }}</textarea><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if sentiment %}
+        <div class="result">
+            <p><strong>Input Text:</strong> {{ text }}</p>
+            <p><strong>Polarity Score:</strong> {{ polarity }}</p>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
